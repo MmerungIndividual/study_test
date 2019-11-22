@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script language="javascript">
+        function exec1(command) {
+            var ws = new ActiveXObject("WScript.Shell");
+            ws.run(command);
+        }
+
+        function input() {
+            text = document.getElementById("data").value;  //获得网页文本框的值
+            var strFile = "input.txt";	//定义文件保存的路径
+            var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+            var objStream = objFSO.CreateTextFile(strFile, true);
+            objStream.Write(text);  //写值
+            objStream.Close();
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <h1>对输入值进行平方计算</h1>
+    </div>
+    <div id="input">
+        <input id="data" type="text" value="22" />
+        <p></p>
+        <input type="button" value="输入完毕" onclick="input()" />
+    </div>
+    <p></p>
+    <div id="program">
+        <input type="button" value="运行程序" onclick="exec1('python E:\Trash_Project\python_spider\test4.py')">
+    </div>
+    <div id="result">
+        <p><a href="result.txt" target="result">显示结果</a></p>
+        <iframe name="result" width="100" height="30" scrolling="no" frameborder="3"></iframe>
+    </div>
+</body>
+</html>
